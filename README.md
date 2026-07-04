@@ -9,7 +9,7 @@ It is intentionally small: no raid frames, click-casting, priority list, or full
 - Detects removable Magic, Curse, Poison, and Disease debuffs based on your class and known spells.
 - Monitors your full available group automatically, including party, raid, and battleground units.
 - Optional pet monitoring.
-- Normal and danger sound selectors, including optional WeakAuras sound choices when WeakAuras is installed.
+- Normal and danger sound selectors, including WeakAuras and PowerAurasMedia sound choices when WeakAuras is installed.
 - Minimum interval between sounds to avoid spam.
 - Optional chat messages.
 - English and Brazilian Portuguese client text.
@@ -62,4 +62,4 @@ BAD/
   BAD.lua
 ```
 
-BAD does not redistribute Decursive or WeakAuras audio files. It references those addon sound paths when they are installed.
+BAD does not redistribute Decursive or WeakAuras audio files. It references those addon sound paths when they are installed. The sound list only includes media shipped by WeakAuras itself, not sounds registered by other addons through LibSharedMedia.

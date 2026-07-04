@@ -191,18 +191,6 @@ local SOUND_ORDER = {
     "raid",
     "ready",
     "deadly",
-    "wa_airhorn",
-    "wa_warning",
-    "wa_temple",
-    "wa_error",
-    "wa_heartbeat",
-    "wa_robot",
-    "wa_water",
-    "wa_bike",
-    "wa_tada",
-    "wa_xylophone",
-    "wa_brass",
-    "wa_glass",
 }
 local COOLDOWN_OPTIONS = { 1, 3, 5, 10, 15, 30 }
 
@@ -232,66 +220,149 @@ local SOUND_OPTIONS = {
         file = "Interface\\AddOns\\Decursive\\Sounds\\G_NecropolisWound-fast.ogg",
         fallbackKit = "RAID_WARNING",
     },
-    wa_airhorn = {
-        label = L.SOUND_WA_AIRHORN,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\AirHorn.ogg",
-        fallbackKit = "RAID_WARNING",
-    },
-    wa_warning = {
-        label = L.SOUND_WA_WARNING,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\WarningSiren.ogg",
-        fallbackKit = "RAID_WARNING",
-    },
-    wa_temple = {
-        label = L.SOUND_WA_TEMPLE,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\TempleBellHuge.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_error = {
-        label = L.SOUND_WA_ERROR,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\ErrorBeep.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_heartbeat = {
-        label = L.SOUND_WA_HEARTBEAT,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\HeartbeatSingle.ogg",
-        fallbackKit = "RAID_WARNING",
-    },
-    wa_robot = {
-        label = L.SOUND_WA_ROBOT,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\RobotBlip.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_water = {
-        label = L.SOUND_WA_WATER,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\WaterDrop.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_bike = {
-        label = L.SOUND_WA_BIKE,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\BikeHorn.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_tada = {
-        label = L.SOUND_WA_TADA,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\TadaFanfare.ogg",
-        fallbackKit = "READY_CHECK",
-    },
-    wa_xylophone = {
-        label = L.SOUND_WA_XYLOPHONE,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\Xylophone.ogg",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
-    wa_brass = {
-        label = L.SOUND_WA_BRASS,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\Brass.mp3",
-        fallbackKit = "RAID_WARNING",
-    },
-    wa_glass = {
-        label = L.SOUND_WA_GLASS,
-        file = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\Glass.mp3",
-        fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
-    },
+}
+
+local WA_MEDIA_PATH = "Interface\\AddOns\\WeakAuras\\Media\\Sounds\\"
+local WA_POWER_AURAS_PATH = "Interface\\Addons\\WeakAuras\\PowerAurasMedia\\Sounds\\"
+
+local WA_SOUND_DEFINITIONS = {
+    { key = "wa_heartbeat_single", label = "WA: Heartbeat Single", file = WA_MEDIA_PATH .. "HeartbeatSingle.ogg" },
+    { key = "wa_batman_punch", label = "WA: Batman Punch", file = WA_MEDIA_PATH .. "BatmanPunch.ogg" },
+    { key = "wa_bike_horn", label = "WA: Bike Horn", file = WA_MEDIA_PATH .. "BikeHorn.ogg" },
+    { key = "wa_boxing_arena_gong", label = "WA: Boxing Arena Gong", file = WA_MEDIA_PATH .. "BoxingArenaSound.ogg" },
+    { key = "wa_bleat", label = "WA: Bleat", file = WA_MEDIA_PATH .. "Bleat.ogg" },
+    { key = "wa_cartoon_hop", label = "WA: Cartoon Hop", file = WA_MEDIA_PATH .. "CartoonHop.ogg" },
+    { key = "wa_cat_meow", label = "WA: Cat Meow", file = WA_MEDIA_PATH .. "CatMeow2.ogg" },
+    { key = "wa_kitten_meow", label = "WA: Kitten Meow", file = WA_MEDIA_PATH .. "KittenMeow.ogg" },
+    { key = "wa_robot_blip", label = "WA: Robot Blip", file = WA_MEDIA_PATH .. "RobotBlip.ogg" },
+    { key = "wa_sharp_punch", label = "WA: Sharp Punch", file = WA_MEDIA_PATH .. "SharpPunch.ogg" },
+    { key = "wa_water_drop", label = "WA: Water Drop", file = WA_MEDIA_PATH .. "WaterDrop.ogg" },
+    { key = "wa_air_horn", label = "WA: Air Horn", file = WA_MEDIA_PATH .. "AirHorn.ogg" },
+    { key = "wa_applause", label = "WA: Applause", file = WA_MEDIA_PATH .. "Applause.ogg" },
+    { key = "wa_banana_peel_slip", label = "WA: Banana Peel Slip", file = WA_MEDIA_PATH .. "BananaPeelSlip.ogg" },
+    { key = "wa_blast", label = "WA: Blast", file = WA_MEDIA_PATH .. "Blast.ogg" },
+    { key = "wa_cartoon_voice_baritone", label = "WA: Cartoon Voice Baritone", file = WA_MEDIA_PATH .. "CartoonVoiceBaritone.ogg" },
+    { key = "wa_cartoon_walking", label = "WA: Cartoon Walking", file = WA_MEDIA_PATH .. "CartoonWalking.ogg" },
+    { key = "wa_cow_mooing", label = "WA: Cow Mooing", file = WA_MEDIA_PATH .. "CowMooing.ogg" },
+    { key = "wa_ringing_phone", label = "WA: Ringing Phone", file = WA_MEDIA_PATH .. "RingingPhone.ogg" },
+    { key = "wa_roaring_lion", label = "WA: Roaring Lion", file = WA_MEDIA_PATH .. "RoaringLion.ogg" },
+    { key = "wa_shotgun", label = "WA: Shotgun", file = WA_MEDIA_PATH .. "Shotgun.ogg" },
+    { key = "wa_squish_fart", label = "WA: Squish Fart", file = WA_MEDIA_PATH .. "SquishFart.ogg" },
+    { key = "wa_temple_bell", label = "WA: Temple Bell", file = WA_MEDIA_PATH .. "TempleBellHuge.ogg" },
+    { key = "wa_torch", label = "WA: Torch", file = WA_MEDIA_PATH .. "Torch.ogg" },
+    { key = "wa_warning_siren", label = "WA: Warning Siren", file = WA_MEDIA_PATH .. "WarningSiren.ogg" },
+    { key = "wa_lich_king_apocalypse", label = "WA: Lich King Apocalypse", kit = 554003 },
+    { key = "wa_sheep_blerping", label = "WA: Sheep Blerping", file = WA_MEDIA_PATH .. "SheepBleat.ogg" },
+    { key = "wa_rooster_chicken_call", label = "WA: Rooster Chicken Call", file = WA_MEDIA_PATH .. "RoosterChickenCalls.ogg" },
+    { key = "wa_goat_bleeting", label = "WA: Goat Bleeting", file = WA_MEDIA_PATH .. "GoatBleating.ogg" },
+    { key = "wa_acoustic_guitar", label = "WA: Acoustic Guitar", file = WA_MEDIA_PATH .. "AcousticGuitar.ogg" },
+    { key = "wa_synth_chord", label = "WA: Synth Chord", file = WA_MEDIA_PATH .. "SynthChord.ogg" },
+    { key = "wa_chicken_alarm", label = "WA: Chicken Alarm", file = WA_MEDIA_PATH .. "ChickenAlarm.ogg" },
+    { key = "wa_xylophone", label = "WA: Xylophone", file = WA_MEDIA_PATH .. "Xylophone.ogg" },
+    { key = "wa_drums", label = "WA: Drums", file = WA_MEDIA_PATH .. "Drums.ogg" },
+    { key = "wa_tada_fanfare", label = "WA: Tada Fanfare", file = WA_MEDIA_PATH .. "TadaFanfare.ogg" },
+    { key = "wa_squeaky_toy_short", label = "WA: Squeaky Toy Short", file = WA_MEDIA_PATH .. "SqueakyToyShort.ogg" },
+    { key = "wa_error_beep", label = "WA: Error Beep", file = WA_MEDIA_PATH .. "ErrorBeep.ogg" },
+    { key = "wa_oh_no", label = "WA: Oh No", file = WA_MEDIA_PATH .. "OhNo.ogg" },
+    { key = "wa_double_whoosh", label = "WA: Double Whoosh", file = WA_MEDIA_PATH .. "DoubleWhoosh.ogg" },
+    { key = "wa_brass", label = "WA: Brass", file = WA_MEDIA_PATH .. "Brass.mp3" },
+    { key = "wa_glass", label = "WA: Glass", file = WA_MEDIA_PATH .. "Glass.mp3" },
+    { key = "wa_voice_adds", label = "WA: Voice: Adds", file = WA_MEDIA_PATH .. "Adds.ogg" },
+    { key = "wa_voice_boss", label = "WA: Voice: Boss", file = WA_MEDIA_PATH .. "Boss.ogg" },
+    { key = "wa_voice_circle", label = "WA: Voice: Circle", file = WA_MEDIA_PATH .. "Circle.ogg" },
+    { key = "wa_voice_cross", label = "WA: Voice: Cross", file = WA_MEDIA_PATH .. "Cross.ogg" },
+    { key = "wa_voice_diamond", label = "WA: Voice: Diamond", file = WA_MEDIA_PATH .. "Diamond.ogg" },
+    { key = "wa_voice_don_t_release", label = "WA: Voice: Don't Release", file = WA_MEDIA_PATH .. "DontRelease.ogg" },
+    { key = "wa_voice_empowered", label = "WA: Voice: Empowered", file = WA_MEDIA_PATH .. "Empowered.ogg" },
+    { key = "wa_voice_focus", label = "WA: Voice: Focus", file = WA_MEDIA_PATH .. "Focus.ogg" },
+    { key = "wa_voice_idiot", label = "WA: Voice: Idiot", file = WA_MEDIA_PATH .. "Idiot.ogg" },
+    { key = "wa_voice_left", label = "WA: Voice: Left", file = WA_MEDIA_PATH .. "Left.ogg" },
+    { key = "wa_voice_moon", label = "WA: Voice: Moon", file = WA_MEDIA_PATH .. "Moon.ogg" },
+    { key = "wa_voice_next", label = "WA: Voice: Next", file = WA_MEDIA_PATH .. "Next.ogg" },
+    { key = "wa_voice_portal", label = "WA: Voice: Portal", file = WA_MEDIA_PATH .. "Portal.ogg" },
+    { key = "wa_voice_protected", label = "WA: Voice: Protected", file = WA_MEDIA_PATH .. "Protected.ogg" },
+    { key = "wa_voice_release", label = "WA: Voice: Release", file = WA_MEDIA_PATH .. "Release.ogg" },
+    { key = "wa_voice_right", label = "WA: Voice: Right", file = WA_MEDIA_PATH .. "Right.ogg" },
+    { key = "wa_voice_run_away", label = "WA: Voice: Run Away", file = WA_MEDIA_PATH .. "RunAway.ogg" },
+    { key = "wa_voice_skull", label = "WA: Voice: Skull", file = WA_MEDIA_PATH .. "Skull.ogg" },
+    { key = "wa_voice_spread", label = "WA: Voice: Spread", file = WA_MEDIA_PATH .. "Spread.ogg" },
+    { key = "wa_voice_square", label = "WA: Voice: Square", file = WA_MEDIA_PATH .. "Square.ogg" },
+    { key = "wa_voice_stack", label = "WA: Voice: Stack", file = WA_MEDIA_PATH .. "Stack.ogg" },
+    { key = "wa_voice_star", label = "WA: Voice: Star", file = WA_MEDIA_PATH .. "Star.ogg" },
+    { key = "wa_voice_switch", label = "WA: Voice: Switch", file = WA_MEDIA_PATH .. "Switch.ogg" },
+    { key = "wa_voice_taunt", label = "WA: Voice: Taunt", file = WA_MEDIA_PATH .. "Taunt.ogg" },
+    { key = "wa_voice_triangle", label = "WA: Voice: Triangle", file = WA_MEDIA_PATH .. "Triangle.ogg" },
+    { key = "wa_pa_aggro", label = "WA: Aggro", file = WA_POWER_AURAS_PATH .. "aggro.ogg" },
+    { key = "wa_pa_arrow_swoosh", label = "WA: Arrow Swoosh", file = WA_POWER_AURAS_PATH .. "Arrow_swoosh.ogg" },
+    { key = "wa_pa_bam", label = "WA: Bam", file = WA_POWER_AURAS_PATH .. "bam.ogg" },
+    { key = "wa_pa_polar_bear", label = "WA: Polar Bear", file = WA_POWER_AURAS_PATH .. "bear_polar.ogg" },
+    { key = "wa_pa_big_kiss", label = "WA: Big Kiss", file = WA_POWER_AURAS_PATH .. "bigkiss.ogg" },
+    { key = "wa_pa_bite", label = "WA: Bite", file = WA_POWER_AURAS_PATH .. "BITE.ogg" },
+    { key = "wa_pa_burp", label = "WA: Burp", file = WA_POWER_AURAS_PATH .. "burp4.ogg" },
+    { key = "wa_pa_cat", label = "WA: Cat", file = WA_POWER_AURAS_PATH .. "cat2.ogg" },
+    { key = "wa_pa_chant_major_2nd", label = "WA: Chant Major 2nd", file = WA_POWER_AURAS_PATH .. "chant2.ogg" },
+    { key = "wa_pa_chant_minor_3rd", label = "WA: Chant Minor 3rd", file = WA_POWER_AURAS_PATH .. "chant4.ogg" },
+    { key = "wa_pa_chimes", label = "WA: Chimes", file = WA_POWER_AURAS_PATH .. "chimes.ogg" },
+    { key = "wa_pa_cookie_monster", label = "WA: Cookie Monster", file = WA_POWER_AURAS_PATH .. "cookie.ogg" },
+    { key = "wa_pa_electrical_spark", label = "WA: Electrical Spark", file = WA_POWER_AURAS_PATH .. "ESPARK1.ogg" },
+    { key = "wa_pa_fireball", label = "WA: Fireball", file = WA_POWER_AURAS_PATH .. "Fireball.ogg" },
+    { key = "wa_pa_gasp", label = "WA: Gasp", file = WA_POWER_AURAS_PATH .. "Gasp.ogg" },
+    { key = "wa_pa_heartbeat", label = "WA: Heartbeat", file = WA_POWER_AURAS_PATH .. "heartbeat.ogg" },
+    { key = "wa_pa_hiccup", label = "WA: Hiccup", file = WA_POWER_AURAS_PATH .. "hic3.ogg" },
+    { key = "wa_pa_huh", label = "WA: Huh?", file = WA_POWER_AURAS_PATH .. "huh_1.ogg" },
+    { key = "wa_pa_hurricane", label = "WA: Hurricane", file = WA_POWER_AURAS_PATH .. "hurricane.ogg" },
+    { key = "wa_pa_hyena", label = "WA: Hyena", file = WA_POWER_AURAS_PATH .. "hyena.ogg" },
+    { key = "wa_pa_kaching", label = "WA: Kaching", file = WA_POWER_AURAS_PATH .. "kaching.ogg" },
+    { key = "wa_pa_moan", label = "WA: Moan", file = WA_POWER_AURAS_PATH .. "moan.ogg" },
+    { key = "wa_pa_panther", label = "WA: Panther", file = WA_POWER_AURAS_PATH .. "panther1.ogg" },
+    { key = "wa_pa_phone", label = "WA: Phone", file = WA_POWER_AURAS_PATH .. "phone.ogg" },
+    { key = "wa_pa_punch", label = "WA: Punch", file = WA_POWER_AURAS_PATH .. "PUNCH.ogg" },
+    { key = "wa_pa_rain", label = "WA: Rain", file = WA_POWER_AURAS_PATH .. "rainroof.ogg" },
+    { key = "wa_pa_rocket", label = "WA: Rocket", file = WA_POWER_AURAS_PATH .. "rocket.ogg" },
+    { key = "wa_pa_ship_s_whistle", label = "WA: Ship's Whistle", file = WA_POWER_AURAS_PATH .. "shipswhistle.ogg" },
+    { key = "wa_pa_gunshot", label = "WA: Gunshot", file = WA_POWER_AURAS_PATH .. "shot.ogg" },
+    { key = "wa_pa_snake_attack", label = "WA: Snake Attack", file = WA_POWER_AURAS_PATH .. "snakeatt.ogg" },
+    { key = "wa_pa_sneeze", label = "WA: Sneeze", file = WA_POWER_AURAS_PATH .. "sneeze.ogg" },
+    { key = "wa_pa_sonar", label = "WA: Sonar", file = WA_POWER_AURAS_PATH .. "sonar.ogg" },
+    { key = "wa_pa_splash", label = "WA: Splash", file = WA_POWER_AURAS_PATH .. "splash.ogg" },
+    { key = "wa_pa_squeaky_toy", label = "WA: Squeaky Toy", file = WA_POWER_AURAS_PATH .. "Squeakypig.ogg" },
+    { key = "wa_pa_sword_ring", label = "WA: Sword Ring", file = WA_POWER_AURAS_PATH .. "swordecho.ogg" },
+    { key = "wa_pa_throwing_knife", label = "WA: Throwing Knife", file = WA_POWER_AURAS_PATH .. "throwknife.ogg" },
+    { key = "wa_pa_thunder", label = "WA: Thunder", file = WA_POWER_AURAS_PATH .. "thunder.ogg" },
+    { key = "wa_pa_wicked_male_laugh", label = "WA: Wicked Male Laugh", file = WA_POWER_AURAS_PATH .. "wickedmalelaugh1.ogg" },
+    { key = "wa_pa_wilhelm_scream", label = "WA: Wilhelm Scream", file = WA_POWER_AURAS_PATH .. "wilhelm.ogg" },
+    { key = "wa_pa_wicked_female_laugh", label = "WA: Wicked Female Laugh", file = WA_POWER_AURAS_PATH .. "wlaugh.ogg" },
+    { key = "wa_pa_wolf_howl", label = "WA: Wolf Howl", file = WA_POWER_AURAS_PATH .. "wolf5.ogg" },
+    { key = "wa_pa_yeehaw", label = "WA: Yeehaw", file = WA_POWER_AURAS_PATH .. "yeehaw.ogg" },
+}
+
+for _, sound in ipairs(WA_SOUND_DEFINITIONS) do
+    SOUND_ORDER[#SOUND_ORDER + 1] = sound.key
+    if sound.kit then
+        SOUND_OPTIONS[sound.key] = {
+            label = sound.label,
+            kit = sound.kit,
+            fallback = sound.kit,
+        }
+    else
+        SOUND_OPTIONS[sound.key] = {
+            label = sound.label,
+            file = sound.file,
+            fallbackKit = "IG_MAINMENU_OPTION_CHECKBOX_ON",
+        }
+    end
+end
+
+local SOUND_ALIASES = {
+    wa_airhorn = "wa_air_horn",
+    wa_warning = "wa_warning_siren",
+    wa_temple = "wa_temple_bell",
+    wa_error = "wa_error_beep",
+    wa_heartbeat = "wa_heartbeat_single",
+    wa_robot = "wa_robot_blip",
+    wa_water = "wa_water_drop",
+    wa_bike = "wa_bike_horn",
+    wa_tada = "wa_tada_fanfare",
 }
 
 local CLASS_DISPELS = {
@@ -413,6 +484,8 @@ local function EnsureDb()
     db.requireUsableSpell = false
     db.checkSpellCooldown = false
     db.warnDangerous = true
+    db.sound = SOUND_ALIASES[db.sound] or db.sound
+    db.dangerousSound = SOUND_ALIASES[db.dangerousSound] or db.dangerousSound
     if not SOUND_OPTIONS[db.sound] then
         db.sound = DEFAULT_DB.sound
     end
