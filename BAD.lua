@@ -907,6 +907,12 @@ local function GetSoundLabel(soundKey)
     return option.label
 end
 
+local function CloseOpenDropdowns()
+    if CloseDropDownMenus then
+        CloseDropDownMenus()
+    end
+end
+
 local function CreateSoundDropdown(parent, frameName, dbKey)
     if not UIDropDownMenu_Initialize or not UIDropDownMenu_CreateInfo or not UIDropDownMenu_AddButton or not UIDropDownMenu_SetWidth or not UIDropDownMenu_SetText then
         return nil
@@ -1132,8 +1138,12 @@ function Bad:OpenOptions()
         window:EnableMouse(true)
         window:SetMovable(true)
         window:RegisterForDrag("LeftButton")
-        window:SetScript("OnDragStart", window.StartMoving)
+        window:SetScript("OnDragStart", function(self)
+            CloseOpenDropdowns()
+            self:StartMoving()
+        end)
         window:SetScript("OnDragStop", window.StopMovingOrSizing)
+        window:SetScript("OnHide", CloseOpenDropdowns)
         window:Hide()
 
         if UISpecialFrames then
