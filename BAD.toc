@@ -3,7 +3,7 @@
 ## Notes: Plays a sound when you or your group has a debuff your class can remove.
 ## Notes-ptBR: Toca um som quando voce ou seu grupo tem um debuff que sua classe pode remover.
 ## Author: Ingo Stramm
-## Version: 1.0.12
+## Version: 1.0.13
 ## SavedVariablesPerCharacter: BADDB
 ## OptionalDeps: Decursive, WeakAuras
 

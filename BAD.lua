@@ -911,38 +911,186 @@ local function CloseOpenDropdowns()
     if CloseDropDownMenus then
         CloseDropDownMenus()
     end
+    if optionsFrame then
+        if optionsFrame.soundDropdown and optionsFrame.soundDropdown.CloseMenu then
+            optionsFrame.soundDropdown:CloseMenu()
+        end
+        if optionsFrame.dangerousSoundDropdown and optionsFrame.dangerousSoundDropdown.CloseMenu then
+            optionsFrame.dangerousSoundDropdown:CloseMenu()
+        end
+    end
 end
 
+local SOUND_DROPDOWN_WIDTH = 180
+local SOUND_DROPDOWN_MENU_WIDTH = 210
+local SOUND_DROPDOWN_ROW_HEIGHT = 18
+local SOUND_DROPDOWN_VISIBLE_ROWS = 14
+
 local function CreateSoundDropdown(parent, frameName, dbKey)
-    if not UIDropDownMenu_Initialize or not UIDropDownMenu_CreateInfo or not UIDropDownMenu_AddButton or not UIDropDownMenu_SetWidth or not UIDropDownMenu_SetText then
-        return nil
+    local dropdown = CreateFrame("Button", frameName, parent, "UIPanelButtonTemplate")
+    dropdown:SetSize(SOUND_DROPDOWN_WIDTH, 22)
+    dropdown.dbKey = dbKey
+
+    local ok, menu = pcall(CreateFrame, "Frame", frameName .. "Menu", dropdown, "BackdropTemplate")
+    if not ok or not menu then
+        menu = CreateFrame("Frame", frameName .. "Menu", dropdown)
+    end
+    menu:SetSize(SOUND_DROPDOWN_MENU_WIDTH, SOUND_DROPDOWN_ROW_HEIGHT * SOUND_DROPDOWN_VISIBLE_ROWS + 10)
+    menu:SetPoint("BOTTOMLEFT", dropdown, "TOPLEFT", 0, 2)
+    menu:SetFrameStrata("FULLSCREEN_DIALOG")
+    menu:SetFrameLevel(dropdown:GetFrameLevel() + 20)
+    menu:EnableMouse(true)
+    menu:Hide()
+
+    if menu.SetBackdrop then
+        menu:SetBackdrop({
+            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+            tile = true,
+            tileSize = 16,
+            edgeSize = 12,
+            insets = { left = 3, right = 3, top = 3, bottom = 3 },
+        })
+        menu:SetBackdropColor(0, 0, 0, 0.94)
+        menu:SetBackdropBorderColor(0.55, 0.55, 0.55, 1)
     end
 
-    local ok, dropdown = pcall(CreateFrame, "Frame", frameName, parent, "UIDropDownMenuTemplate")
-    if not ok or not dropdown then
-        return nil
-    end
+    local scrollFrame = CreateFrame("ScrollFrame", frameName .. "ScrollFrame", menu, "UIPanelScrollFrameTemplate")
+    scrollFrame:SetPoint("TOPLEFT", menu, "TOPLEFT", 6, -5)
+    scrollFrame:SetPoint("BOTTOMRIGHT", menu, "BOTTOMRIGHT", -28, 5)
 
-    UIDropDownMenu_SetWidth(dropdown, 150)
-    UIDropDownMenu_Initialize(dropdown, function(self, level)
-        for _, key in ipairs(SOUND_ORDER) do
-            local info = UIDropDownMenu_CreateInfo()
-            info.text = GetSoundLabel(key)
-            info.checked = db[dbKey] == key
-            info.func = function()
-                db[dbKey] = key
-                UIDropDownMenu_SetText(dropdown, GetSoundLabel(db[dbKey]))
-                Bad:RefreshOptions()
-                Bad:PlayAlertSound(true, key)
-            end
-            UIDropDownMenu_AddButton(info, level)
+    local content = CreateFrame("Frame", frameName .. "ScrollChild", scrollFrame)
+    content:SetSize(SOUND_DROPDOWN_MENU_WIDTH - 34, #SOUND_ORDER * SOUND_DROPDOWN_ROW_HEIGHT)
+    scrollFrame:SetScrollChild(content)
+    scrollFrame:EnableMouseWheel(true)
+    scrollFrame:SetScript("OnMouseWheel", function(self, delta)
+        local maxScroll = math.max(0, content:GetHeight() - self:GetHeight())
+        local nextScroll = self:GetVerticalScroll() - (delta * SOUND_DROPDOWN_ROW_HEIGHT * 3)
+        if nextScroll < 0 then
+            nextScroll = 0
+        elseif nextScroll > maxScroll then
+            nextScroll = maxScroll
+        end
+        self:SetVerticalScroll(nextScroll)
+        local scrollBar = _G[self:GetName() .. "ScrollBar"]
+        if scrollBar then
+            scrollBar:SetValue(nextScroll)
         end
     end)
-    UIDropDownMenu_SetText(dropdown, GetSoundLabel(db[dbKey]))
+
+    dropdown.menu = menu
+    dropdown.rows = {}
+
+    function dropdown:CloseMenu()
+        self.menu:Hide()
+    end
+
+    function dropdown:PositionMenu()
+        self.menu:ClearAllPoints()
+        local top = self:GetTop() or 0
+        if top > self.menu:GetHeight() + 20 then
+            self.menu:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 2)
+        else
+            self.menu:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 0, -2)
+        end
+    end
+
+    function dropdown:OpenMenu()
+        if CloseDropDownMenus then
+            CloseDropDownMenus()
+        end
+        if optionsFrame then
+            if optionsFrame.soundDropdown and optionsFrame.soundDropdown ~= self and optionsFrame.soundDropdown.CloseMenu then
+                optionsFrame.soundDropdown:CloseMenu()
+            end
+            if optionsFrame.dangerousSoundDropdown and optionsFrame.dangerousSoundDropdown ~= self and optionsFrame.dangerousSoundDropdown.CloseMenu then
+                optionsFrame.dangerousSoundDropdown:CloseMenu()
+            end
+        end
+        self:PositionMenu()
+        self.menu:Show()
+    end
+
+    function dropdown:ToggleMenu()
+        if self.menu:IsShown() then
+            self:CloseMenu()
+        else
+            self:OpenMenu()
+        end
+    end
+
+    function dropdown:UpdateText()
+        self:SetText(GetSoundLabel(db[self.dbKey]))
+    end
+
+    for index, key in ipairs(SOUND_ORDER) do
+        local row = CreateFrame("Button", nil, content)
+        row:SetHeight(SOUND_DROPDOWN_ROW_HEIGHT)
+        row:SetPoint("TOPLEFT", content, "TOPLEFT", 0, -((index - 1) * SOUND_DROPDOWN_ROW_HEIGHT))
+        row:SetPoint("RIGHT", content, "RIGHT", 0, 0)
+        row.key = key
+
+        row.check = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+        row.check:SetPoint("LEFT", row, "LEFT", 2, 0)
+        row.check:SetWidth(14)
+        row.check:SetJustifyH("LEFT")
+
+        row.text = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+        row.text:SetPoint("LEFT", row.check, "RIGHT", 2, 0)
+        row.text:SetPoint("RIGHT", row, "RIGHT", -2, 0)
+        row.text:SetJustifyH("LEFT")
+        row.text:SetText(GetSoundLabel(key))
+
+        row.highlight = row:CreateTexture(nil, "BACKGROUND")
+        row.highlight:SetAllPoints(row)
+        row.highlight:SetColorTexture(1, 0.82, 0, 0.22)
+        row.highlight:Hide()
+
+        row:SetScript("OnEnter", function(self)
+            self.highlight:Show()
+        end)
+        row:SetScript("OnLeave", function(self)
+            self.highlight:Hide()
+        end)
+        row:SetScript("OnClick", function(self)
+            db[dbKey] = self.key
+            dropdown:UpdateText()
+            dropdown:CloseMenu()
+            Bad:RefreshOptions()
+            Bad:PlayAlertSound(true, self.key)
+        end)
+
+        dropdown.rows[#dropdown.rows + 1] = row
+    end
+
+    function dropdown:RefreshChecked()
+        local selected = db[self.dbKey]
+        for _, row in ipairs(self.rows) do
+            row.check:SetText(row.key == selected and ">" or "")
+        end
+        self:UpdateText()
+    end
+
+    dropdown:SetScript("OnClick", function(self)
+        self:ToggleMenu()
+    end)
+    dropdown:SetScript("OnHide", function(self)
+        self:CloseMenu()
+    end)
+    dropdown:RefreshChecked()
 
     return dropdown
 end
 
+local function RefreshSoundDropdown(dropdown)
+    if dropdown and dropdown.RefreshChecked then
+        dropdown:RefreshChecked()
+    end
+end
+
+-- The sound lists are too large for WoW's global UIDropDownMenu without
+-- detaching from the movable options window, so only the small interval
+-- selector uses the stock dropdown.
 local function CreateCooldownDropdown(parent)
     if not UIDropDownMenu_Initialize or not UIDropDownMenu_CreateInfo or not UIDropDownMenu_AddButton or not UIDropDownMenu_SetWidth or not UIDropDownMenu_SetText then
         return nil
@@ -1101,13 +1249,9 @@ function Bad:RefreshOptions()
         optionsFrame.soundValue:SetText(GetSoundLabel(db.sound))
     end
 
-    if optionsFrame.soundDropdown and UIDropDownMenu_SetText then
-        UIDropDownMenu_SetText(optionsFrame.soundDropdown, GetSoundLabel(db.sound))
-    end
+    RefreshSoundDropdown(optionsFrame.soundDropdown)
 
-    if optionsFrame.dangerousSoundDropdown and UIDropDownMenu_SetText then
-        UIDropDownMenu_SetText(optionsFrame.dangerousSoundDropdown, GetSoundLabel(db.dangerousSound))
-    end
+    RefreshSoundDropdown(optionsFrame.dangerousSoundDropdown)
 
     if optionsFrame.dangerousSoundValue then
         optionsFrame.dangerousSoundValue:SetText(GetSoundLabel(db.dangerousSound))
