@@ -41,7 +41,6 @@ local L = {
     DANGEROUS_SOUND = "Danger sound",
     COOLDOWN = "Sound interval",
     SOUND_CHANNEL = "Sound channel",
-    SOUND_VOLUME = "Sound volume",
     CHANNEL_MASTER = "Master",
     CHANNEL_SFX = "SFX",
     CHANNEL_AMBIENCE = "Ambience",
@@ -126,7 +125,6 @@ if LOCALE == "ptBR" then
         DANGEROUS_SOUND = "Som de perigo",
         COOLDOWN = "Intervalo do som",
         SOUND_CHANNEL = "Canal do som",
-        SOUND_VOLUME = "Volume do som",
         CHANNEL_MASTER = "Mestre",
         CHANNEL_SFX = "Efeitos",
         CHANNEL_AMBIENCE = "Ambiente",
@@ -193,7 +191,6 @@ local DEFAULT_DB = {
     sound = "decursive",
     dangerousSound = "deadly",
     soundChannel = "Master",
-    soundVolume = 1,
     cooldown = 5,
     requireKnownSpell = true,
     requireUsableSpell = false,
@@ -217,7 +214,6 @@ local CHANNEL_LABELS = {
     Music = L.CHANNEL_MUSIC,
     Dialog = L.CHANNEL_DIALOG,
 }
-local VOLUME_OPTIONS = { 0.1, 0.25, 0.5, 0.75, 1 }
 
 local SOUND_OPTIONS = {
     decursive = {
@@ -512,29 +508,8 @@ local function NormalizeChannel(value)
     return DEFAULT_DB.soundChannel
 end
 
-local function NormalizeVolume(value)
-    value = tonumber(value) or DEFAULT_DB.soundVolume
-    local closest = VOLUME_OPTIONS[1]
-    local closestDistance = math.abs(value - closest)
-
-    for _, option in ipairs(VOLUME_OPTIONS) do
-        local distance = math.abs(value - option)
-        if distance < closestDistance then
-            closest = option
-            closestDistance = distance
-        end
-    end
-
-    return closest
-end
-
 local function GetChannelLabel(value)
     return CHANNEL_LABELS[value] or CHANNEL_LABELS[DEFAULT_DB.soundChannel]
-end
-
-local function GetVolumeLabel(value)
-    value = NormalizeVolume(value)
-    return tostring(math.floor((value * 100) + 0.5)) .. "%"
 end
 
 local function EnsureDb()
@@ -559,8 +534,8 @@ local function EnsureDb()
         db.dangerousSound = DEFAULT_DB.dangerousSound
     end
     db.soundChannel = NormalizeChannel(db.soundChannel)
-    db.soundVolume = NormalizeVolume(db.soundVolume)
     db.cooldown = NormalizeCooldown(db.cooldown)
+    db.soundVolume = nil
     db.alertPlayer = nil
     db.alertGroup = nil
     db.alertRaid = nil
@@ -593,15 +568,8 @@ local function PlaySoundKit(kitName, fallback)
     local kit = GetSoundKit(kitName, fallback)
     if kit and PlaySound then
         local channel = db.soundChannel or DEFAULT_DB.soundChannel
-        local volume = db.soundVolume or DEFAULT_DB.soundVolume
-        if volume < 1 then
-            local ok = pcall(PlaySound, kit, channel, volume)
-            if ok then
-                return true
-            end
-        end
-        PlaySound(kit, channel)
-        return true
+        local ok = pcall(PlaySound, kit, channel)
+        return ok and true or false
     end
     return false
 end
@@ -610,13 +578,6 @@ local function PlaySoundOption(soundKey)
     local option = SOUND_OPTIONS[soundKey] or SOUND_OPTIONS.decursive
     if option.file and PlaySoundFile then
         local channel = db.soundChannel or DEFAULT_DB.soundChannel
-        local volume = db.soundVolume or DEFAULT_DB.soundVolume
-        if volume < 1 then
-            local callOk, played = pcall(PlaySoundFile, option.file, channel, volume)
-            if callOk and played then
-                return true
-            end
-        end
         local callOk, played = pcall(PlaySoundFile, option.file, channel)
         if callOk and played then
             return true
@@ -1229,20 +1190,6 @@ local function CreateChannelDropdown(parent)
     return dropdown
 end
 
-local function CreateVolumeDropdown(parent)
-    local dropdown = CreateSimpleDropdown(parent, "BADVolumeDropdown", 100, VOLUME_OPTIONS, GetVolumeLabel, function(value)
-        return db.soundVolume == value
-    end, function(value)
-        db.soundVolume = value
-        Bad:PlayAlertSound(true)
-    end)
-    if dropdown and UIDropDownMenu_SetText then
-        UIDropDownMenu_SetText(dropdown, GetVolumeLabel(db.soundVolume))
-    end
-
-    return dropdown
-end
-
 local function CycleSound(direction)
     local currentIndex = 1
     for index, key in ipairs(SOUND_ORDER) do
@@ -1366,17 +1313,6 @@ function Bad:CreateOptionsFrame()
         frame.channelValue:SetPoint("TOPLEFT", frame, "TOPLEFT", 16, -282)
     end
 
-    local volumeTitle = CreateText(frame, L.SOUND_VOLUME, "GameFontNormalLarge")
-    volumeTitle:SetPoint("TOPLEFT", frame, "TOPLEFT", 208, -254)
-
-    frame.volumeDropdown = CreateVolumeDropdown(frame)
-    if frame.volumeDropdown then
-        frame.volumeDropdown:SetPoint("TOPLEFT", frame, "TOPLEFT", 198, -276)
-    else
-        frame.volumeValue = CreateText(frame, "", "GameFontHighlight")
-        frame.volumeValue:SetPoint("TOPLEFT", frame, "TOPLEFT", 208, -282)
-    end
-
     optionsFrame = frame
     return frame
 end
@@ -1418,13 +1354,6 @@ function Bad:RefreshOptions()
         optionsFrame.channelValue:SetText(GetChannelLabel(db.soundChannel))
     end
 
-    if optionsFrame.volumeDropdown and UIDropDownMenu_SetText then
-        UIDropDownMenu_SetText(optionsFrame.volumeDropdown, GetVolumeLabel(db.soundVolume))
-    end
-
-    if optionsFrame.volumeValue then
-        optionsFrame.volumeValue:SetText(GetVolumeLabel(db.soundVolume))
-    end
 end
 
 function Bad:OpenOptions()
@@ -1496,7 +1425,7 @@ local function PrintStatus()
     Print(L.STATUS .. ": " .. (db.enabled and L.ENABLED or L.DISABLED))
     Print(L.NORMAL_SOUND .. ": " .. GetSoundLabel(db.sound) .. " / " .. L.DANGEROUS_SOUND .. ": " .. GetSoundLabel(db.dangerousSound))
     Print(L.COOLDOWN .. ": " .. tostring(db.cooldown) .. " " .. L.SECONDS)
-    Print(L.SOUND_CHANNEL .. ": " .. GetChannelLabel(db.soundChannel) .. " / " .. L.SOUND_VOLUME .. ": " .. GetVolumeLabel(db.soundVolume))
+    Print(L.SOUND_CHANNEL .. ": " .. GetChannelLabel(db.soundChannel))
     Print(L.CHAT_MESSAGES .. ": " .. BoolText(db.chat) .. " / " .. L.ONLY_COMBAT .. ": " .. BoolText(db.onlyCombat))
 end
 
