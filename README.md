@@ -10,6 +10,7 @@ It is intentionally small: no raid frames, click-casting, priority list, or full
 - Monitors your full available group automatically, including party, raid, and battleground units.
 - Optional pet monitoring.
 - Normal and danger sound selectors, including WeakAuras and PowerAurasMedia sound choices when WeakAuras is installed.
+- Sound channel and sound volume options.
 - Minimum interval between sounds to avoid spam.
 - Optional chat messages.
 - English and Brazilian Portuguese client text.
@@ -63,3 +64,5 @@ BAD/
 ```
 
 BAD does not redistribute Decursive or WeakAuras audio files. It references those addon sound paths when they are installed. The sound list only includes media shipped by WeakAuras itself, not sounds registered by other addons through LibSharedMedia.
+
+The sound channel setting uses the game's audio channels. The sound volume setting is applied per alert when the client API supports per-call volume; otherwise the selected game channel volume controls playback.
