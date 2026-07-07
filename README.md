@@ -1,5 +1,7 @@
 # BAD - Bad Aura Detector
 
+![BAD logo](assets/bad-logo.png)
+
 BAD plays a sound when you or someone in your current group, raid, or battleground has a debuff your character can remove.
 
 It is intentionally small: no raid frames, click-casting, priority list, or full dispel UI. It only watches for removable debuffs and alerts you.
@@ -13,7 +15,15 @@ It is intentionally small: no raid frames, click-casting, priority list, or full
 - Sound channel option.
 - Minimum interval between sounds to avoid spam.
 - Optional chat messages.
-- English and Brazilian Portuguese client text.
+- Localized client text for all WoW-supported locales.
+
+## Localization
+
+BAD supports the following WoW client locales:
+
+```text
+enUS, enGB, ptBR, deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN, zhTW
+```
 
 ## Commands
 
@@ -52,6 +62,10 @@ Do not use GitHub's green **Code > Download ZIP** button for installation. That 
 
 - World of Warcraft Classic Anniversary TBC
 - Interface: `20505`
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Release Packaging
 

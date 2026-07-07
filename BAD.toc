@@ -2,8 +2,18 @@
 ## Title: BAD
 ## Notes: Plays a sound when you or your group has a debuff your class can remove.
 ## Notes-ptBR: Toca um som quando voce ou seu grupo tem um debuff que sua classe pode remover.
+## Notes-deDE: Spielt einen Ton ab, wenn du oder deine Gruppe einen Debuff habt, den deine Klasse entfernen kann.
+## Notes-esES: Reproduce un sonido cuando tu o tu grupo teneis un perjuicio que tu clase puede eliminar.
+## Notes-esMX: Reproduce un sonido cuando tu o tu grupo tienen un perjuicio que tu clase puede eliminar.
+## Notes-frFR: Joue un son lorsque vous ou votre groupe avez un affaiblissement que votre classe peut dissiper.
+## Notes-itIT: Riproduce un suono quando tu o il tuo gruppo avete un debuff che la tua classe puo rimuovere.
+## Notes-koKR: 자신 또는 파티/공격대에 직업이 해제할 수 있는 약화 효과가 있으면 소리를 재생합니다.
+## Notes-ruRU: Воспроизводит звук, когда на вас или группе есть эффект, который ваш класс может рассеять.
+## Notes-zhCN: 当你或队伍中有人受到你的职业可以移除的减益效果时播放声音。
+## Notes-zhTW: 當你或隊伍中有人受到你的職業可以移除的減益效果時播放音效。
 ## Author: Ingo Stramm
-## Version: 1.0.15
+## Version: 1.0.16
+## X-Curse-Project-ID: 1601542
 ## SavedVariablesPerCharacter: BADDB
 ## OptionalDeps: Decursive, WeakAuras
 
