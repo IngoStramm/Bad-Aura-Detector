@@ -61,7 +61,8 @@ Do not use GitHub's green **Code > Download ZIP** button for installation. That 
 ## Compatibility
 
 - World of Warcraft Classic Anniversary TBC
-- Interface: `20505`
+- Client: `2.5.6 (68502)`
+- Interface: `20506`
 
 ## Changelog
 
