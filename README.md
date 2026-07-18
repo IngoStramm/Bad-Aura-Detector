@@ -68,6 +68,10 @@ Do not use GitHub's green **Code > Download ZIP** button for installation. That 
 - Client: `2.5.6 (68502)`
 - Interface: `20506`
 
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for planned visual compatibility with popular third-party party and raid-frame addons.
+
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
