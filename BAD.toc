@@ -12,7 +12,7 @@
 ## Notes-zhCN: 对可驱散的减益效果播放警报并高亮暴雪框体。
 ## Notes-zhTW: 對可驅散的減益效果播放警報並醒目提示暴雪框架。
 ## Author: Ingo Stramm
-## Version: 1.1.0
+## Version: 1.2.0
 ## X-Curse-Project-ID: 1601542
 ## SavedVariablesPerCharacter: BADDB
 ## OptionalDeps: Decursive, WeakAuras

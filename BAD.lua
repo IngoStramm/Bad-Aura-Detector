@@ -10,13 +10,13 @@ local LOCALES = {
         ADDON_TITLE = "BAD",
         ADDON_LONG = "Bad Aura Detector",
         LOADED = "loaded. Use /bad config or /bad help.",
-        ENABLED = "enabled.",
-        DISABLED = "disabled.",
+        ENABLED = "Both modules enabled.",
+        DISABLED = "Both modules disabled.",
         HELP_HEADER = "BAD commands:",
         HELP_CONFIG = "/bad config - open options",
         HELP_TEST = "/bad test - play the alert sound",
-        HELP_ON = "/bad on - enable alerts",
-        HELP_OFF = "/bad off - disable alerts",
+        HELP_ON = "/bad on - enable both modules",
+        HELP_OFF = "/bad off - disable both modules",
         HELP_STATUS = "/bad status - show current settings",
         HELP_SOUND = "/bad sound [next|sound key] - set alert sound",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - set the minimum time between sounds",
@@ -28,11 +28,13 @@ local LOCALES = {
         OPTIONS = "Options",
         CLOSE = "Close",
         TEST_SOUND = "Test sound",
-        RESET_DEFAULTS = "Reset defaults",
-        ENABLE_ADDON = "Enable alerts",
+RESET_DEFAULTS = "Reset defaults",
+MODULES = "Modules",
+SOUND_MODULE = "Sound alerts",
+VISUAL_MODULE = "Blizzard frame visuals",
         IGNORE_PETS = "Ignore pets",
         IGNORE_DEAD = "Ignore dead/offline units",
-        ONLY_COMBAT = "Only alert in combat",
+        ONLY_COMBAT = "Sound alerts only in combat",
         CHAT_MESSAGES = "Print chat message",
         REQUIRE_KNOWN = "Require known spell",
         REQUIRE_USABLE = "Require usable spell",
@@ -106,13 +108,13 @@ local LOCALES = {
         ADDON_TITLE = "BAD",
         ADDON_LONG = "Bad Aura Detector",
         LOADED = "carregado. Use /bad config ou /bad help.",
-        ENABLED = "ativado.",
-        DISABLED = "desativado.",
+        ENABLED = "Os dois modulos foram ativados.",
+        DISABLED = "Os dois modulos foram desativados.",
         HELP_HEADER = "Comandos do BAD:",
         HELP_CONFIG = "/bad config - abrir opcoes",
         HELP_TEST = "/bad test - tocar o som de alerta",
-        HELP_ON = "/bad on - ativar alertas",
-        HELP_OFF = "/bad off - desativar alertas",
+        HELP_ON = "/bad on - ativar os dois modulos",
+        HELP_OFF = "/bad off - desativar os dois modulos",
         HELP_STATUS = "/bad status - mostrar configuracao atual",
         HELP_SOUND = "/bad sound [next|chave do som] - escolher som",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - definir tempo minimo entre sons",
@@ -124,11 +126,13 @@ local LOCALES = {
         OPTIONS = "Opcoes",
         CLOSE = "Fechar",
         TEST_SOUND = "Testar som",
-        RESET_DEFAULTS = "Restaurar padroes",
-        ENABLE_ADDON = "Ativar alertas",
+RESET_DEFAULTS = "Restaurar padroes",
+MODULES = "Modulos",
+SOUND_MODULE = "Alertas sonoros",
+VISUAL_MODULE = "Visuais nos frames da Blizzard",
         IGNORE_PETS = "Ignorar pets",
         IGNORE_DEAD = "Ignorar mortos/offline",
-        ONLY_COMBAT = "Alertar apenas em combate",
+        ONLY_COMBAT = "Alertas sonoros apenas em combate",
         CHAT_MESSAGES = "Mostrar mensagem no chat",
         REQUIRE_KNOWN = "Exigir spell conhecida",
         REQUIRE_USABLE = "Exigir spell usavel",
@@ -200,13 +204,13 @@ local LOCALES = {
     },
     deDE = {
         LOADED = "geladen. Benutze /bad config oder /bad help.",
-        ENABLED = "aktiviert.",
-        DISABLED = "deaktiviert.",
+        ENABLED = "Beide Module aktiviert.",
+        DISABLED = "Beide Module deaktiviert.",
         HELP_HEADER = "BAD-Befehle:",
         HELP_CONFIG = "/bad config - Optionen oeffnen",
         HELP_TEST = "/bad test - Warnton abspielen",
-        HELP_ON = "/bad on - Warnungen aktivieren",
-        HELP_OFF = "/bad off - Warnungen deaktivieren",
+        HELP_ON = "/bad on - beide Module aktivieren",
+        HELP_OFF = "/bad off - beide Module deaktivieren",
         HELP_STATUS = "/bad status - aktuelle Einstellungen anzeigen",
         HELP_SOUND = "/bad sound [next|Sound-Schluessel] - Warnton festlegen",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - Mindestzeit zwischen Toenen festlegen",
@@ -218,11 +222,13 @@ local LOCALES = {
         OPTIONS = "Optionen",
         CLOSE = "Schliessen",
         TEST_SOUND = "Ton testen",
-        RESET_DEFAULTS = "Standardwerte",
-        ENABLE_ADDON = "Warnungen aktivieren",
+RESET_DEFAULTS = "Standardwerte",
+MODULES = "Module",
+SOUND_MODULE = "Akustische Warnungen",
+VISUAL_MODULE = "Visuelle Blizzard-Rahmen",
         IGNORE_PETS = "Begleiter ignorieren",
         IGNORE_DEAD = "Tote/offline Einheiten ignorieren",
-        ONLY_COMBAT = "Nur im Kampf warnen",
+        ONLY_COMBAT = "Akustische Warnungen nur im Kampf",
         CHAT_MESSAGES = "Chatmeldung ausgeben",
         ADVANCED = "Erweitert",
         SOUND = "Ton",
@@ -279,13 +285,13 @@ local LOCALES = {
     },
     esES = {
         LOADED = "cargado. Usa /bad config o /bad help.",
-        ENABLED = "activado.",
-        DISABLED = "desactivado.",
+        ENABLED = "Ambos modulos activados.",
+        DISABLED = "Ambos modulos desactivados.",
         HELP_HEADER = "Comandos de BAD:",
         HELP_CONFIG = "/bad config - abrir opciones",
         HELP_TEST = "/bad test - reproducir el sonido de alerta",
-        HELP_ON = "/bad on - activar alertas",
-        HELP_OFF = "/bad off - desactivar alertas",
+        HELP_ON = "/bad on - activar ambos modulos",
+        HELP_OFF = "/bad off - desactivar ambos modulos",
         HELP_STATUS = "/bad status - mostrar ajustes actuales",
         HELP_SOUND = "/bad sound [next|clave de sonido] - definir sonido de alerta",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - definir tiempo minimo entre sonidos",
@@ -297,11 +303,13 @@ local LOCALES = {
         OPTIONS = "Opciones",
         CLOSE = "Cerrar",
         TEST_SOUND = "Probar sonido",
-        RESET_DEFAULTS = "Restablecer",
-        ENABLE_ADDON = "Activar alertas",
+RESET_DEFAULTS = "Restablecer",
+MODULES = "Modulos",
+SOUND_MODULE = "Alertas sonoras",
+VISUAL_MODULE = "Indicadores en marcos de Blizzard",
         IGNORE_PETS = "Ignorar mascotas",
         IGNORE_DEAD = "Ignorar muertos/desconectados",
-        ONLY_COMBAT = "Alertar solo en combate",
+        ONLY_COMBAT = "Alertas sonoras solo en combate",
         CHAT_MESSAGES = "Mostrar mensaje de chat",
         ADVANCED = "Avanzado",
         SOUND = "Sonido",
@@ -358,13 +366,13 @@ local LOCALES = {
     },
     esMX = {
         LOADED = "cargado. Usa /bad config o /bad help.",
-        ENABLED = "activado.",
-        DISABLED = "desactivado.",
+        ENABLED = "Ambos modulos activados.",
+        DISABLED = "Ambos modulos desactivados.",
         HELP_HEADER = "Comandos de BAD:",
         HELP_CONFIG = "/bad config - abrir opciones",
         HELP_TEST = "/bad test - reproducir el sonido de alerta",
-        HELP_ON = "/bad on - activar alertas",
-        HELP_OFF = "/bad off - desactivar alertas",
+        HELP_ON = "/bad on - activar ambos modulos",
+        HELP_OFF = "/bad off - desactivar ambos modulos",
         HELP_STATUS = "/bad status - mostrar configuracion actual",
         HELP_SOUND = "/bad sound [next|clave de sonido] - configurar sonido de alerta",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - configurar tiempo minimo entre sonidos",
@@ -376,11 +384,13 @@ local LOCALES = {
         OPTIONS = "Opciones",
         CLOSE = "Cerrar",
         TEST_SOUND = "Probar sonido",
-        RESET_DEFAULTS = "Restablecer",
-        ENABLE_ADDON = "Activar alertas",
+RESET_DEFAULTS = "Restablecer",
+MODULES = "Modulos",
+SOUND_MODULE = "Alertas sonoras",
+VISUAL_MODULE = "Indicadores en marcos de Blizzard",
         IGNORE_PETS = "Ignorar mascotas",
         IGNORE_DEAD = "Ignorar muertos/desconectados",
-        ONLY_COMBAT = "Alertar solo en combate",
+        ONLY_COMBAT = "Alertas sonoras solo en combate",
         CHAT_MESSAGES = "Mostrar mensaje en chat",
         ADVANCED = "Avanzado",
         SOUND = "Sonido",
@@ -437,13 +447,13 @@ local LOCALES = {
     },
     frFR = {
         LOADED = "charge. Utilisez /bad config ou /bad help.",
-        ENABLED = "active.",
-        DISABLED = "desactive.",
+        ENABLED = "Les deux modules sont actives.",
+        DISABLED = "Les deux modules sont desactives.",
         HELP_HEADER = "Commandes BAD :",
         HELP_CONFIG = "/bad config - ouvrir les options",
         HELP_TEST = "/bad test - jouer le son d'alerte",
-        HELP_ON = "/bad on - activer les alertes",
-        HELP_OFF = "/bad off - desactiver les alertes",
+        HELP_ON = "/bad on - activer les deux modules",
+        HELP_OFF = "/bad off - desactiver les deux modules",
         HELP_STATUS = "/bad status - afficher les reglages actuels",
         HELP_SOUND = "/bad sound [next|cle du son] - definir le son d'alerte",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - definir le delai minimum entre les sons",
@@ -455,11 +465,13 @@ local LOCALES = {
         OPTIONS = "Options",
         CLOSE = "Fermer",
         TEST_SOUND = "Tester le son",
-        RESET_DEFAULTS = "Par defaut",
-        ENABLE_ADDON = "Activer les alertes",
+RESET_DEFAULTS = "Par defaut",
+MODULES = "Modules",
+SOUND_MODULE = "Alertes sonores",
+VISUAL_MODULE = "Indicateurs sur les cadres Blizzard",
         IGNORE_PETS = "Ignorer les familiers",
         IGNORE_DEAD = "Ignorer morts/hors ligne",
-        ONLY_COMBAT = "Alerter seulement en combat",
+        ONLY_COMBAT = "Alertes sonores uniquement en combat",
         CHAT_MESSAGES = "Afficher un message",
         ADVANCED = "Avance",
         SOUND = "Son",
@@ -516,13 +528,13 @@ local LOCALES = {
     },
     itIT = {
         LOADED = "caricato. Usa /bad config o /bad help.",
-        ENABLED = "abilitato.",
-        DISABLED = "disabilitato.",
+        ENABLED = "Entrambi i moduli sono abilitati.",
+        DISABLED = "Entrambi i moduli sono disabilitati.",
         HELP_HEADER = "Comandi BAD:",
         HELP_CONFIG = "/bad config - apri opzioni",
         HELP_TEST = "/bad test - riproduci il suono di avviso",
-        HELP_ON = "/bad on - abilita avvisi",
-        HELP_OFF = "/bad off - disabilita avvisi",
+        HELP_ON = "/bad on - abilita entrambi i moduli",
+        HELP_OFF = "/bad off - disabilita entrambi i moduli",
         HELP_STATUS = "/bad status - mostra impostazioni attuali",
         HELP_SOUND = "/bad sound [next|chiave suono] - imposta suono di avviso",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - imposta il tempo minimo tra i suoni",
@@ -534,11 +546,13 @@ local LOCALES = {
         OPTIONS = "Opzioni",
         CLOSE = "Chiudi",
         TEST_SOUND = "Prova suono",
-        RESET_DEFAULTS = "Ripristina",
-        ENABLE_ADDON = "Abilita avvisi",
+RESET_DEFAULTS = "Ripristina",
+MODULES = "Moduli",
+SOUND_MODULE = "Avvisi sonori",
+VISUAL_MODULE = "Indicatori sui riquadri Blizzard",
         IGNORE_PETS = "Ignora famigli",
         IGNORE_DEAD = "Ignora morti/offline",
-        ONLY_COMBAT = "Avvisa solo in combattimento",
+        ONLY_COMBAT = "Avvisi sonori solo in combattimento",
         CHAT_MESSAGES = "Stampa messaggio in chat",
         ADVANCED = "Avanzate",
         SOUND = "Suono",
@@ -595,13 +609,13 @@ local LOCALES = {
     },
     koKR = {
         LOADED = "로드되었습니다. /bad config 또는 /bad help를 사용하세요.",
-        ENABLED = "활성화됨.",
-        DISABLED = "비활성화됨.",
+        ENABLED = "두 모듈이 활성화되었습니다.",
+        DISABLED = "두 모듈이 비활성화되었습니다.",
         HELP_HEADER = "BAD 명령어:",
         HELP_CONFIG = "/bad config - 옵션 열기",
         HELP_TEST = "/bad test - 경고음 재생",
-        HELP_ON = "/bad on - 경고 활성화",
-        HELP_OFF = "/bad off - 경고 비활성화",
+        HELP_ON = "/bad on - 두 모듈 활성화",
+        HELP_OFF = "/bad off - 두 모듈 비활성화",
         HELP_STATUS = "/bad status - 현재 설정 표시",
         HELP_SOUND = "/bad sound [next|sound key] - 경고음 설정",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - 소리 사이 최소 시간 설정",
@@ -613,11 +627,13 @@ local LOCALES = {
         OPTIONS = "옵션",
         CLOSE = "닫기",
         TEST_SOUND = "소리 테스트",
-        RESET_DEFAULTS = "기본값 복원",
-        ENABLE_ADDON = "경고 활성화",
+RESET_DEFAULTS = "기본값 복원",
+MODULES = "모듈",
+SOUND_MODULE = "소리 경고",
+VISUAL_MODULE = "블리자드 프레임 시각 효과",
         IGNORE_PETS = "소환수 무시",
         IGNORE_DEAD = "죽음/오프라인 무시",
-        ONLY_COMBAT = "전투 중에만 경고",
+        ONLY_COMBAT = "전투 중에만 소리 경고",
         CHAT_MESSAGES = "대화창 메시지 출력",
         ADVANCED = "고급",
         SOUND = "소리",
@@ -674,13 +690,13 @@ local LOCALES = {
     },
     ruRU = {
         LOADED = "загружен. Используйте /bad config или /bad help.",
-        ENABLED = "включен.",
-        DISABLED = "выключен.",
+        ENABLED = "Оба модуля включены.",
+        DISABLED = "Оба модуля выключены.",
         HELP_HEADER = "Команды BAD:",
         HELP_CONFIG = "/bad config - открыть настройки",
         HELP_TEST = "/bad test - воспроизвести звук оповещения",
-        HELP_ON = "/bad on - включить оповещения",
-        HELP_OFF = "/bad off - выключить оповещения",
+        HELP_ON = "/bad on - включить оба модуля",
+        HELP_OFF = "/bad off - выключить оба модуля",
         HELP_STATUS = "/bad status - показать текущие настройки",
         HELP_SOUND = "/bad sound [next|ключ звука] - задать звук оповещения",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - задать минимум времени между звуками",
@@ -692,11 +708,13 @@ local LOCALES = {
         OPTIONS = "Настройки",
         CLOSE = "Закрыть",
         TEST_SOUND = "Проверить звук",
-        RESET_DEFAULTS = "Сбросить",
-        ENABLE_ADDON = "Включить оповещения",
+RESET_DEFAULTS = "Сбросить",
+MODULES = "Модули",
+SOUND_MODULE = "Звуковые оповещения",
+VISUAL_MODULE = "Визуальные эффекты рамок Blizzard",
         IGNORE_PETS = "Игнорировать питомцев",
         IGNORE_DEAD = "Игнорировать мертвых/оффлайн",
-        ONLY_COMBAT = "Оповещать только в бою",
+        ONLY_COMBAT = "Звуковые оповещения только в бою",
         CHAT_MESSAGES = "Писать сообщение в чат",
         ADVANCED = "Дополнительно",
         SOUND = "Звук",
@@ -753,13 +771,13 @@ local LOCALES = {
     },
     zhCN = {
         LOADED = "已加载。使用 /bad config 或 /bad help。",
-        ENABLED = "已启用。",
-        DISABLED = "已禁用。",
+        ENABLED = "两个模块均已启用。",
+        DISABLED = "两个模块均已禁用。",
         HELP_HEADER = "BAD 命令：",
         HELP_CONFIG = "/bad config - 打开选项",
         HELP_TEST = "/bad test - 播放警报声音",
-        HELP_ON = "/bad on - 启用警报",
-        HELP_OFF = "/bad off - 禁用警报",
+        HELP_ON = "/bad on - 启用两个模块",
+        HELP_OFF = "/bad off - 禁用两个模块",
         HELP_STATUS = "/bad status - 显示当前设置",
         HELP_SOUND = "/bad sound [next|sound key] - 设置警报声音",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - 设置声音之间的最短时间",
@@ -771,11 +789,13 @@ local LOCALES = {
         OPTIONS = "选项",
         CLOSE = "关闭",
         TEST_SOUND = "测试声音",
-        RESET_DEFAULTS = "恢复默认",
-        ENABLE_ADDON = "启用警报",
+RESET_DEFAULTS = "恢复默认",
+MODULES = "模块",
+SOUND_MODULE = "声音警报",
+VISUAL_MODULE = "暴雪框体视觉提示",
         IGNORE_PETS = "忽略宠物",
         IGNORE_DEAD = "忽略死亡/离线单位",
-        ONLY_COMBAT = "仅战斗中警报",
+        ONLY_COMBAT = "仅在战斗中播放声音警报",
         CHAT_MESSAGES = "打印聊天消息",
         ADVANCED = "高级",
         SOUND = "声音",
@@ -832,13 +852,13 @@ local LOCALES = {
     },
     zhTW = {
         LOADED = "已載入。使用 /bad config 或 /bad help。",
-        ENABLED = "已啟用。",
-        DISABLED = "已停用。",
+        ENABLED = "兩個模組均已啟用。",
+        DISABLED = "兩個模組均已停用。",
         HELP_HEADER = "BAD 指令：",
         HELP_CONFIG = "/bad config - 開啟選項",
         HELP_TEST = "/bad test - 播放警報音效",
-        HELP_ON = "/bad on - 啟用警報",
-        HELP_OFF = "/bad off - 停用警報",
+        HELP_ON = "/bad on - 啟用兩個模組",
+        HELP_OFF = "/bad off - 停用兩個模組",
         HELP_STATUS = "/bad status - 顯示目前設定",
         HELP_SOUND = "/bad sound [next|sound key] - 設定警報音效",
         HELP_COOLDOWN = "/bad cooldown <1|3|5|10|15|30> - 設定音效之間的最短時間",
@@ -850,11 +870,13 @@ local LOCALES = {
         OPTIONS = "選項",
         CLOSE = "關閉",
         TEST_SOUND = "測試音效",
-        RESET_DEFAULTS = "恢復預設",
-        ENABLE_ADDON = "啟用警報",
+RESET_DEFAULTS = "恢復預設",
+MODULES = "模組",
+SOUND_MODULE = "聲音警報",
+VISUAL_MODULE = "暴雪框架視覺提示",
         IGNORE_PETS = "忽略寵物",
         IGNORE_DEAD = "忽略死亡/離線單位",
-        ONLY_COMBAT = "僅戰鬥中警報",
+        ONLY_COMBAT = "僅在戰鬥中播放聲音警報",
         CHAT_MESSAGES = "輸出聊天訊息",
         ADVANCED = "進階",
         SOUND = "音效",
@@ -963,8 +985,9 @@ local DISPEL_TYPE_TEXTURES = {
 }
 
 local DEFAULT_DB = {
-    version = 1,
-    enabled = true,
+    version = 2,
+    soundEnabled = true,
+    visualEnabled = true,
     ignorePets = true,
     ignoreDeadOffline = true,
     onlyCombat = false,
@@ -1359,13 +1382,25 @@ local function GetChannelLabel(value)
 end
 
 local function EnsureDb()
-    if type(BADDB) ~= "table" then
+    local hadExistingDb = type(BADDB) == "table"
+    local storedVersion = hadExistingDb and (tonumber(BADDB.version) or 1) or DEFAULT_DB.version
+    local legacyEnabled = hadExistingDb and BADDB.enabled
+
+    if not hadExistingDb then
         BADDB = CopyDefaults(DEFAULT_DB)
     else
         BADDB = MergeDefaults(BADDB, DEFAULT_DB)
     end
 
     db = BADDB
+    if storedVersion < 2 then
+        if legacyEnabled == false then
+            db.soundEnabled = false
+            db.visualEnabled = false
+        end
+        db.version = 2
+    end
+    db.enabled = nil
     db.ignoreDeadOffline = true
     db.requireKnownSpell = true
     db.requireUsableSpell = false
@@ -1445,6 +1480,10 @@ local function PlaySoundOption(soundKey)
 end
 
 function Bad:PlayAlertSound(force, soundKey)
+    if not force and (not db or not db.soundEnabled) then
+        return false
+    end
+
     local now = GetTime and GetTime() or 0
     if not force and db.cooldown and db.cooldown > 0 and now - lastSoundTime < db.cooldown then
         Debug("sound throttled")
@@ -1973,7 +2012,7 @@ function Bad:RefreshVisualFrame(frame)
     end
 
     local unit = frame.displayedUnit or frame.unit
-    if not db or not db.enabled or not IsTrackedCompactUnit(unit) then
+    if not db or not db.visualEnabled or not IsTrackedCompactUnit(unit) then
         frame.BADVisualOverlay:Hide()
         return
     end
@@ -2074,14 +2113,20 @@ function Bad:ProcessPendingVisualFrames()
 end
 
 function Bad:Scan()
-    if not db or not db.enabled then
+    if not db then
         activeDebuffs = {}
         visualUnitStates = {}
         self:RefreshVisualFrames()
         return
     end
 
-    if db.onlyCombat and UnitAffectingCombat and not UnitAffectingCombat("player") then
+    local soundActive = db.soundEnabled and true or false
+    local visualActive = db.visualEnabled and true or false
+    if soundActive and db.onlyCombat and UnitAffectingCombat and not UnitAffectingCombat("player") then
+        soundActive = false
+    end
+
+    if not soundActive and not visualActive then
         activeDebuffs = {}
         visualUnitStates = {}
         self:RefreshVisualFrames()
@@ -2090,6 +2135,7 @@ function Bad:Scan()
 
     local classSpells = playerClass and CLASS_DISPELS[playerClass]
     if not classSpells then
+        activeDebuffs = {}
         visualUnitStates = {}
         self:RefreshVisualFrames()
         Debug(L.CLASS_UNSUPPORTED)
@@ -2104,32 +2150,35 @@ function Bad:Scan()
         if UnitShouldBeScanned(unit) then
             local alerts = FindRemovableDebuffs(unit)
             for _, alert in ipairs(alerts) do
-                local key = GetAlertKey(alert)
-                current[key] = true
-
-                local visualState = currentVisualUnits[alert.unitKey]
-                if not visualState then
-                    visualState = { types = {} }
-                    currentVisualUnits[alert.unitKey] = visualState
+                if soundActive then
+                    local key = GetAlertKey(alert)
+                    current[key] = true
+                    if not activeDebuffs[key] and not firstNewAlert then
+                        firstNewAlert = alert
+                    end
                 end
-                visualState.types[alert.type] = true
 
-                if not activeDebuffs[key] and not firstNewAlert then
-                    firstNewAlert = alert
+                if visualActive then
+                    local visualState = currentVisualUnits[alert.unitKey]
+                    if not visualState then
+                        visualState = { types = {} }
+                        currentVisualUnits[alert.unitKey] = visualState
+                    end
+                    visualState.types[alert.type] = true
                 end
             end
         end
     end
 
-    activeDebuffs = current
-    visualUnitStates = currentVisualUnits
+    activeDebuffs = soundActive and current or {}
+    visualUnitStates = visualActive and currentVisualUnits or {}
     self:RefreshVisualFrames()
 
-    if firstNewAlert then
+    if soundActive and firstNewAlert then
         PrintAlert(firstNewAlert)
         local soundKey = firstNewAlert.dangerous and db.warnDangerous and db.dangerousSound or db.sound
         self:PlayAlertSound(false, soundKey)
-    else
+    elseif soundActive then
         Debug(L.NO_DISPEL)
     end
 end
@@ -2902,10 +2951,20 @@ function Bad:CreateOptionsFrame()
         return check
     end
 
-    AddCheckbox(L.ENABLE_ADDON, 16, -56, function() return db.enabled end, function(value) db.enabled = value end)
-    AddCheckbox(L.IGNORE_PETS, 16, -86, function() return db.ignorePets end, function(value) db.ignorePets = value end)
-    AddCheckbox(L.ONLY_COMBAT, 16, -116, function() return db.onlyCombat end, function(value) db.onlyCombat = value end)
-    AddCheckbox(L.CHAT_MESSAGES, 16, -146, function() return db.chat end, function(value) db.chat = value end)
+    local modulesTitle = CreateText(frame, L.MODULES, "GameFontNormalLarge")
+    modulesTitle:SetPoint("TOPLEFT", frame, "TOPLEFT", 16, -56)
+
+    AddCheckbox(L.SOUND_MODULE, 16, -84, function() return db.soundEnabled end, function(value)
+        db.soundEnabled = value
+        activeDebuffs = {}
+    end)
+    AddCheckbox(L.VISUAL_MODULE, 16, -114, function() return db.visualEnabled end, function(value)
+        db.visualEnabled = value
+        visualUnitStates = {}
+    end)
+    AddCheckbox(L.IGNORE_PETS, 16, -146, function() return db.ignorePets end, function(value) db.ignorePets = value end)
+    AddCheckbox(L.ONLY_COMBAT, 16, -176, function() return db.onlyCombat end, function(value) db.onlyCombat = value end)
+    AddCheckbox(L.CHAT_MESSAGES, 16, -206, function() return db.chat end, function(value) db.chat = value end)
 
     local advancedTitle = CreateText(frame, L.ADVANCED, "GameFontNormalLarge")
     advancedTitle:SetPoint("TOPLEFT", frame, "TOPLEFT", 280, -56)
@@ -3133,7 +3192,7 @@ function Bad:RegisterInterfaceOptions()
 end
 
 local function PrintStatus()
-    Print(L.STATUS .. ": " .. (db.enabled and L.ENABLED or L.DISABLED))
+    Print(L.MODULES .. ": " .. L.SOUND_MODULE .. " " .. BoolText(db.soundEnabled) .. " / " .. L.VISUAL_MODULE .. " " .. BoolText(db.visualEnabled))
     Print(L.NORMAL_SOUND .. ": " .. GetSoundLabel(db.sound) .. " / " .. L.DANGEROUS_SOUND .. ": " .. GetSoundLabel(db.dangerousSound))
     Print(L.COOLDOWN .. ": " .. tostring(db.cooldown) .. " " .. L.SECONDS)
     Print(L.SOUND_CHANNEL .. ": " .. GetChannelLabel(db.soundChannel))
@@ -3195,12 +3254,15 @@ local function HandleSlash(message)
     elseif command == "preview" then
         Bad:TogglePreview()
     elseif command == "on" or command == "enable" then
-        db.enabled = true
+        db.soundEnabled = true
+        db.visualEnabled = true
+        activeDebuffs = {}
         Print(L.ENABLED)
         Bad:RefreshOptions()
         Bad:QueueScan()
     elseif command == "off" or command == "disable" then
-        db.enabled = false
+        db.soundEnabled = false
+        db.visualEnabled = false
         activeDebuffs = {}
         visualUnitStates = {}
         Print(L.DISABLED)
