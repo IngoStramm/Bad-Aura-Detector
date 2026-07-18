@@ -1,0 +1,11 @@
+Added independent sound-alert and Blizzard-frame visual modules, allowing either feature to be enabled on its own.
+
+Made alert sounds, alert chat messages, and combat-only filtering part of the sound module.
+
+Made colored borders, inner glows, and dispel-type icons part of the visual module.
+
+Kept sound testing and the Blizzard-frame preview available while their respective modules are disabled.
+
+Updated /bad on and /bad off to enable or disable both modules together.
+
+Added migration for existing settings and localized module controls and help text for every supported WoW client locale.

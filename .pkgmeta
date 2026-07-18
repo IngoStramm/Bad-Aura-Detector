@@ -1,13 +1,14 @@
 package-as: BAD
 
 manual-changelog:
-  filename: CHANGELOG.md
-  markup-type: markdown
+  filename: CURSEFORGE_CHANGELOG.txt
+  markup-type: plain
 
 ignore:
   - .pkgmeta
   - README.md
   - CHANGELOG.md
+  - CURSEFORGE_CHANGELOG.txt
   - assets
   - .github
   - .git
