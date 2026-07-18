@@ -2,15 +2,20 @@
 
 ![BAD logo](assets/bad-logo.png)
 
-BAD plays a sound when you or someone in your current group, raid, or battleground has a debuff your character can remove.
+BAD plays a sound and can highlight Blizzard compact group frames when you or someone in your current group, raid, or battleground has a debuff your character can remove.
 
-It is intentionally small: no raid frames, click-casting, priority list, or full dispel UI. It only watches for removable debuffs and alerts you.
+It is intentionally small: it enhances Blizzard's compact group frames without replacing them and does not add click-casting, priority lists, or a full dispel UI. It watches only for debuffs your current character knows how to remove.
 
 ## Features
 
 - Detects removable Magic, Curse, Poison, and Disease debuffs based on your class and known spells.
 - Monitors your full available group automatically, including party, raid, and battleground units.
 - Optional pet monitoring.
+- Optional colored borders, inner glows, and generic dispel-type icons on Blizzard compact group frames, with configurable border and icon sizes.
+- Multi-type borders use a neutral white highlight by default while the colored icons identify every removable debuff type.
+- Custom colors for Magic, Curse, Disease, Poison, and multiple-type highlights, applied consistently to borders, glows, and icons.
+- Multiple dispel icons automatically shrink only as needed to fit side by side without overlap.
+- Native Blizzard compact-frame preview with a live player row plus synthetic Magic, Curse, Poison, Disease, and multiple-debuff examples.
 - Normal and danger sound selectors, including WeakAuras and PowerAurasMedia sound choices when WeakAuras is installed.
 - Sound channel option.
 - Minimum interval between sounds to avoid spam.
@@ -27,18 +32,16 @@ enUS, enGB, ptBR, deDE, esES, esMX, frFR, itIT, koKR, ruRU, zhCN, zhTW
 
 ## Commands
 
-```text
-/bad config
-/bad test
-/bad on
-/bad off
-/bad status
-/bad sound next
-/bad cooldown 5
-/bad chat
-/bad debug
-/bad combat
-```
+- `/bad config` - open the BAD options.
+- `/bad test` - play the selected normal alert sound.
+- `/bad preview` - toggle the solo Blizzard-frame preview.
+- `/bad on` and `/bad off` - enable or disable alerts.
+- `/bad status` - print the current settings.
+- `/bad sound next` - cycle the normal alert sound.
+- `/bad cooldown 5` - set the minimum interval between sounds.
+- `/bad chat` - toggle chat messages.
+- `/bad debug` - toggle diagnostic messages.
+- `/bad combat` - toggle combat-only alerts.
 
 ## Installation
 

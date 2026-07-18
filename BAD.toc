@@ -1,18 +1,18 @@
 ## Interface: 20506
 ## Title: BAD
-## Notes: Plays a sound when you or your group has a debuff your class can remove.
-## Notes-ptBR: Toca um som quando voce ou seu grupo tem um debuff que sua classe pode remover.
-## Notes-deDE: Spielt einen Ton ab, wenn du oder deine Gruppe einen Debuff habt, den deine Klasse entfernen kann.
-## Notes-esES: Reproduce un sonido cuando tu o tu grupo teneis un perjuicio que tu clase puede eliminar.
-## Notes-esMX: Reproduce un sonido cuando tu o tu grupo tienen un perjuicio que tu clase puede eliminar.
-## Notes-frFR: Joue un son lorsque vous ou votre groupe avez un affaiblissement que votre classe peut dissiper.
-## Notes-itIT: Riproduce un suono quando tu o il tuo gruppo avete un debuff che la tua classe puo rimuovere.
-## Notes-koKR: 자신 또는 파티/공격대에 직업이 해제할 수 있는 약화 효과가 있으면 소리를 재생합니다.
-## Notes-ruRU: Воспроизводит звук, когда на вас или группе есть эффект, который ваш класс может рассеять.
-## Notes-zhCN: 当你或队伍中有人受到你的职业可以移除的减益效果时播放声音。
-## Notes-zhTW: 當你或隊伍中有人受到你的職業可以移除的減益效果時播放音效。
+## Notes: Sounds an alert and highlights Blizzard frames for debuffs your class can remove.
+## Notes-ptBR: Toca um alerta e destaca os frames da Blizzard para debuffs que sua classe pode remover.
+## Notes-deDE: Warnt akustisch und markiert Blizzard-Rahmen bei Debuffs, die deine Klasse entfernen kann.
+## Notes-esES: Alerta con sonido y resalta los marcos de Blizzard para perjuicios que tu clase puede disipar.
+## Notes-esMX: Alerta con sonido y resalta los marcos de Blizzard para perjuicios que tu clase puede disipar.
+## Notes-frFR: Emet une alerte et colore les cadres Blizzard pour les affaiblissements dissipables.
+## Notes-itIT: Avvisa con un suono ed evidenzia i riquadri Blizzard per i debuff rimovibili.
+## Notes-koKR: 해제 가능한 약화 효과가 있으면 소리로 알리고 블리자드 프레임을 강조합니다.
+## Notes-ruRU: Подает звуковой сигнал и выделяет рамки Blizzard для рассеиваемых эффектов.
+## Notes-zhCN: 对可驱散的减益效果播放警报并高亮暴雪框体。
+## Notes-zhTW: 對可驅散的減益效果播放警報並醒目提示暴雪框架。
 ## Author: Ingo Stramm
-## Version: 1.0.17
+## Version: 1.1.0
 ## X-Curse-Project-ID: 1601542
 ## SavedVariablesPerCharacter: BADDB
 ## OptionalDeps: Decursive, WeakAuras
